@@ -12,7 +12,6 @@
         overflow-x: hidden;
     }
 
-    /* --- TITLE GLOW --- */
     h1 {
         font-size: 45px;
         background: linear-gradient(90deg, #58a6ff, #8bcdff, #58a6ff);
@@ -27,12 +26,6 @@
         100% { text-shadow: 0 0 10px #58a6ff; }
     }
 
-    h3 { 
-        color:#9ecbff; 
-        font-size: 22px;
-    }
-
-    /* --- GLASS CARD --- */
     #mainMenu {
         width: 50%;
         margin: auto;
@@ -51,7 +44,6 @@
         100% { transform: translateY(0px); }
     }
 
-    /* --- BUTTONS --- */
     button {
         padding: 15px 35px;
         margin: 15px;
@@ -70,10 +62,8 @@
         box-shadow: 0 0 18px #3dd46a;
     }
 
-    /* Other sections stay hidden */
     #ecosystemPage, #animalPage { display: none; }
 
-    /* Keep existing styles for effects + species */
     #effects, #effects2 { 
         margin-top: 20px; 
         padding: 20px; 
@@ -105,12 +95,16 @@
         filter: drop-shadow(0 0 4px #58a6ff);
     }
 
+    /* ⭐ FIX FOR MOBILE CLICKING (VERY IMPORTANT!) ⭐ */
+    button, .species, svg, #mainMenu, #ecosystemPage, #animalPage {
+        pointer-events: auto !important;
+    }
 </style>
 
 </head>
 <body>
 
-<!-- ----------------- MAIN MENU (Improved) ------------------- -->
+<!-- ----------------- MAIN MENU ------------------- -->
 <div id="mainMenu">
     <h1>🌎 Biodiversity Interactive Simulator</h1>
     <h3>Choose a cycle to explore</h3>
@@ -118,8 +112,6 @@
     <button onclick="openPage('ecosystemPage')">🌿 Ecosystem Cycle</button>
     <button onclick="openPage('animalPage')">🐛 Animal Life Cycle</button>
 </div>
-
-<!-- (The rest of your code stays EXACTLY the same below) -->
 
 <!-- ----------------- ECOSYSTEM PAGE ------------------- -->
 <div id="ecosystemPage">
@@ -133,7 +125,6 @@
             </marker>
         </defs>
 
-        <!-- Arrow paths -->
         <line x1="300" y1="120" x2="150" y2="180" marker-end="url(#arrow)" />
         <line x1="190" y1="200" x2="260" y2="200" marker-end="url(#arrow)" />
         <line x1="340" y1="200" x2="410" y2="200" marker-end="url(#arrow)" />
@@ -156,65 +147,4 @@
         <circle cx="300" cy="330" r="40" fill="#8b4513" class="species" onclick="removeSpecies('decomposers')" />
         <text x="300" y="330" dy="5" text-anchor="middle">Decomposers</text>
 
-        <circle cx="90" cy="330" r="40" fill="#FFD700" class="species" onclick="removeSpecies('bee')" />
-        <text x="90" y="330" dy="5" text-anchor="middle">Bee</text>
-    </svg>
-
-    <div id="effects"><b>Click any species to see the environmental effect.</b></div>
-    <br>
-    <button onclick="goBack()">⬅ Back</button>
-</div>
-
-<!-- ----------------- ANIMAL LIFE CYCLE PAGE ------------------- -->
-<div id="animalPage">
-    <h2>🐛 Butterfly Life Cycle — Click a Stage to “Remove” It</h2>
-
-    <svg width="650" height="300">
-
-        <defs>
-            <marker id="arrow2" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
-                <polygon points="0 0, 10 3, 0 6" fill="#58a6ff" />
-            </marker>
-        </defs>
-
-        <line x1="160" y1="150" x2="210" y2="150" marker-end="url(#arrow2)" />
-        <line x1="290" y1="150" x2="340" y2="150" marker-end="url(#arrow2)" />
-        <line x1="420" y1="150" x2="470" y2="150" marker-end="url(#arrow2)" />
-        <line x1="510" y1="110" x2="140" y2="110" marker-end="url(#arrow2)" />
-
-        <circle cx="120" cy="150" r="40" fill="#FFFACD" class="species" onclick="removeAnimal('egg')" />
-        <text x="120" y="150" dy="5" text-anchor="middle">Egg</text>
-
-        <circle cx="250" cy="150" r="40" fill="#7CFC00" class="species" onclick="removeAnimal('caterpillar')" />
-        <text x="250" y="150" dy="5" text-anchor="middle">Caterpillar</text>
-
-        <circle cx="380" cy="150" r="40" fill="#DAA520" class="species" onclick="removeAnimal('pupa')" />
-        <text x="380" y="150" dy="5" text-anchor="middle">Pupa</text>
-
-        <circle cx="510" cy="150" r="40" fill="#FF69B4" class="species" onclick="removeAnimal('butterfly')" />
-        <text x="510" y="150" dy="5" text-anchor="middle">Butterfly</text>
-    </svg>
-
-    <div id="effects2"><b>Click any stage to see the effect.</b></div>
-    <br>
-    <button onclick="goBack()">⬅ Back</button>
-</div>
-
-<!-- ----------------- JAVASCRIPT ------------------- -->
-<script>
-function openPage(page) {
-    document.getElementById("mainMenu").style.display = "none";
-    document.getElementById(page).style.display = "block";
-}
-
-function goBack() {
-    document.getElementById("ecosystemPage").style.display = "none";
-    document.getElementById("animalPage").style.display = "none";
-    document.getElementById("mainMenu").style.display = "block";
-}
-
-// Effects functions remain unchanged…
-</script>
-
-</body>
-</html>
+        <circle cx="90" cy="330" r="40" fill="#FFD700" cla
